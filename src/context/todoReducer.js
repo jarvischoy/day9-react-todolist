@@ -7,7 +7,12 @@ export const todoReducer = (state, action) => {
     case "ADD":
       return [...state, { id: uuidv4(), text: action.payload.text, done: false }]
     case "TOGGLE":
-      return state
+      return state.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, done: !todo.done }
+        }
+        return todo
+      })
     case "DELETE":
       return state.filter((todo) => todo.id !== action.payload.id)
     default:

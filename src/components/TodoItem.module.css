@@ -1,0 +1,19 @@
+.itemContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.itemContainer > div {
+  width: 500px;
+  border: 1px solid #ccc;
+}
+
+.done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.not-done {
+  text-decoration: none;
+  color: #333;
+}
