@@ -1,0 +1,26 @@
+.generatorContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.generatorContainer > button {
+  padding: 5px 20px;
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.generatorContainer > button:hover {
+  background-color: #6495ed95;
+  cursor: pointer;
+}
+
+.generatorContainer > input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}

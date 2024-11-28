@@ -19,7 +19,7 @@ const TodoItem = (props) => {
     <div className={done ? styles.done : styles.notDone} onClick={handleToggle}>
       {text}
     </div>
-    <button onClick={handleDelete}>x</button>
+    <button className={styles.deleteButton} onClick={handleDelete}>x</button>
   </div>
 }
 

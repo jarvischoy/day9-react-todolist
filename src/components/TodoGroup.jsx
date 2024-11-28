@@ -12,7 +12,7 @@ const TodoGroup = () => {
   })
 
   return <div className={styles.groupContainer}>
-    {todoItems}
+    {state.length === 0 ? "Add the things you need to do today..." : todoItems}
     <TodoGenerator />
   </div>
 }

@@ -1,9 +1,10 @@
 import React from "react"
 import TodoGroup from "./TodoGroup"
+import styles from "./TodoList.module.css"
 
 const TodoList = () => {
   return <>
-    <div>Todo List</div>
+    <div className={styles.title}>Todo List</div>
     <TodoGroup />
   </>
 
