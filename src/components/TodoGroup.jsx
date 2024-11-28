@@ -7,7 +7,7 @@ const TodoGroup = () => {
   const { state } = useContext(TodoContext)
 
   const todoItems = state.map((todo) => {
-    return <TodoItem key={todo.id} text={todo.text} />
+    return <TodoItem key={todo.id} id={todo.id} text={todo.text} />
   })
 
   return <>
