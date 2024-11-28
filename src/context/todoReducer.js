@@ -1,8 +1,16 @@
-export const initialState = [
-  { id: Date.now(), text: "This is the first thing I need to do", done: false },
-  { id: Date.now(), text: "This is the second thing I need to do", done: false },
-]
+import { v4 as uuid } from "uuid"
+
+export const initialState = []
 
 export const todoReducer = (state, action) => {
-  return state
+  switch (action.type) {
+    case "ADD":
+      return [...state, { id: uuid(), text: action.payload.text, done: false }]
+    case "TOGGLE":
+      return state
+    case "DELETE":
+      return state
+    default:
+      return state
+  }
 }
