@@ -1,7 +1,8 @@
 import React, { useContext } from "react"
+import TodoGenerator from "./TodoGenerator"
 import TodoItem from "./TodoItem"
 import { TodoContext } from "../context/TodoContext"
-import TodoGenerator from "./TodoGenerator"
+import { TodoListEnum } from "../enum/TodoListEnum"
 import styles from "./TodoGroup.module.css"
 
 const TodoGroup = () => {
@@ -12,7 +13,7 @@ const TodoGroup = () => {
   })
 
   return <div className={styles.groupContainer}>
-    {state.length === 0 ? "Add the things you need to do today..." : todoItems}
+    {state.length === 0 ? TodoListEnum.ADD_THE_THINGS_YOU_NEED_TO_DO_TODAY : todoItems}
     <TodoGenerator />
   </div>
 }

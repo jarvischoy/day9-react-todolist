@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import { TodoContext } from "../context/TodoContext"
+import { ActionEnum } from "../enum/ActionEnum"
 import styles from "./TodoGenerator.module.css"
 
 const TodoGenerator = () => {
@@ -11,7 +12,7 @@ const TodoGenerator = () => {
   }
 
   const handleAdd = () => {
-    text && dispatch({ type: "ADD", payload: { text } })
+    text && dispatch({ type: ActionEnum.ADD, payload: { text } })
     setText("")
   }
 
