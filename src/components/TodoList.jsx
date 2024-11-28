@@ -1,7 +1,12 @@
+import React from "react"
+import TodoGroup from "./TodoGroup"
+
 const TodoList = () => {
-  return (
-      <div>This is the TodoList Component.</div>
-  );
+  return <>
+    <div>Todo List</div>
+    <TodoGroup />
+  </>
+
 }
 
 export default TodoList
