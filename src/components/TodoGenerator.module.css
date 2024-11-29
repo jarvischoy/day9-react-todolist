@@ -8,14 +8,8 @@
 .generatorContainer > button {
   padding: 5px 20px;
   background-color: cornflowerblue;
-  border: none;
   border-radius: 5px;
   color: #fff;
-}
-
-.generatorContainer > button:hover {
-  background-color: #6495ed95;
-  cursor: pointer;
 }
 
 .generatorContainer > input {

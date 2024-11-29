@@ -4,6 +4,7 @@ import { ActionEnum } from "../enum/ActionEnum"
 import styles from "./TodoGenerator.module.css"
 import { TodoListEnum } from "../enum/TodoListEnum"
 import { addTodos } from "../api/todos"
+import { Button, Input } from "antd"
 
 const TodoGenerator = () => {
   const [text, setText] = useState("")
@@ -28,8 +29,8 @@ const TodoGenerator = () => {
   }
 
   return <div className={styles.generatorContainer}>
-    <input type="text" placeholder={TodoListEnum.INPUT_PLACEHOLDER} value={text} onChange={handleInputChange} />
-    <button onClick={handleAdd}>add</button>
+    <Input type="text" placeholder={TodoListEnum.INPUT_PLACEHOLDER} value={text} onChange={handleInputChange} />
+    <Button onClick={handleAdd}>Add</Button>
   </div >
 
 }

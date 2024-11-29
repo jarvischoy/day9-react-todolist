@@ -22,14 +22,6 @@
 }
 
 .deleteButton {
-  background-color: lightcoral;
-  color: #fff;
-  border: none;
   border-radius: 5px;
   padding: 5px 10px;
-}
-
-.deleteButton:hover {
-  background-color: #ff634795;
-  cursor: pointer;
 }

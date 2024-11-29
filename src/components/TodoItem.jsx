@@ -4,6 +4,7 @@ import { TodoContext } from "../context/TodoContext"
 import { ActionEnum } from "../enum/ActionEnum"
 import styles from "./TodoItem.module.css"
 import { deleteTodos, updateTodos } from "../api/todos"
+import { Button } from "antd"
 
 const TodoItem = ({ todo }) => {
   const { id, text, done } = todo
@@ -25,7 +26,7 @@ const TodoItem = ({ todo }) => {
     <div className={done ? styles.done : styles.notDone} onClick={handleToggle}>
       {text}
     </div>
-    <button className={styles.deleteButton} onClick={handleDelete}>x</button>
+    <Button danger className={styles.deleteButton} onClick={handleDelete}>x</Button>
   </div>
 }
 
