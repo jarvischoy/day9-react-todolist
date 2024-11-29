@@ -5,7 +5,7 @@ import TodoGenerator from "./TodoGenerator"
 import styles from "./TodoGroup.module.css"
 import TodoItem from "./TodoItem"
 
-const TodoGroup = () => {
+const TodoGroup = ({ isLoading }) => {
   const { state } = useContext(TodoContext)
 
   const todoItems = state.map((todo) => {
@@ -13,12 +13,16 @@ const TodoGroup = () => {
   })
 
   return <div className={styles.groupContainer}>
-    {
+    {isLoading ?
+      <div className={styles.placeholder}>
+        Loading...
+      </div> :
       state === null || state.length === 0 ?
         <div className={styles.placeholder}>
           {TodoListEnum.ADD_THE_THINGS_YOU_NEED_TO_DO_TODAY}
         </div> :
         todoItems
+
     }
     <TodoGenerator />
   </div>

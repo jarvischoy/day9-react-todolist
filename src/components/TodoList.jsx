@@ -7,10 +7,13 @@ import { getTodos } from "../api/todos"
 
 const TodoList = () => {
   const { dispatch } = useContext(TodoContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const onLoad = async () => {
-    const todos = await getTodos()
-    dispatch({ type: ActionEnum.LOAD, payload: todos.data })
+    setIsLoading(true)
+    await getTodos()
+      .then((todos) => dispatch({ type: ActionEnum.LOAD, payload: todos.data }))
+      .finally(() => setIsLoading(false))
   }
 
   useEffect(() => {
@@ -19,7 +22,7 @@ const TodoList = () => {
 
   return <>
     <div className={styles.title}>Todo List</div>
-    <TodoGroup />
+    <TodoGroup isLoading={isLoading} />
   </>
 
 }
