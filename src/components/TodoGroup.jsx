@@ -4,6 +4,7 @@ import { TodoListEnum } from "../enum/TodoListEnum"
 import TodoGenerator from "./TodoGenerator"
 import styles from "./TodoGroup.module.css"
 import TodoItem from "./TodoItem"
+import { Spin } from "antd"
 
 const TodoGroup = ({ isLoading }) => {
   const { state } = useContext(TodoContext)
@@ -14,9 +15,7 @@ const TodoGroup = ({ isLoading }) => {
 
   return <div className={styles.groupContainer}>
     {isLoading ?
-      <div className={styles.placeholder}>
-        Loading...
-      </div> :
+      <Spin /> :
       state === null || state.length === 0 ?
         <div className={styles.placeholder}>
           {TodoListEnum.ADD_THE_THINGS_YOU_NEED_TO_DO_TODAY}
