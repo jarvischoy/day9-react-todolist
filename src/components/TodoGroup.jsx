@@ -9,12 +9,12 @@ const TodoGroup = () => {
   const { state } = useContext(TodoContext)
 
   const todoItems = state.map((todo) => {
-    return <TodoItem key={todo.id} id={todo.id} text={todo.text} done={todo.done} />
+    return <TodoItem key={todo.id} todo={todo} />
   })
 
   return <div className={styles.groupContainer}>
     {
-      state.length === 0 ?
+      state === null || state.length === 0 ?
         <div className={styles.placeholder}>
           {TodoListEnum.ADD_THE_THINGS_YOU_NEED_TO_DO_TODAY}
         </div> :

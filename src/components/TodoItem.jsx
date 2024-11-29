@@ -4,8 +4,8 @@ import { TodoContext } from "../context/TodoContext"
 import { ActionEnum } from "../enum/ActionEnum"
 import styles from "./TodoItem.module.css"
 
-const TodoItem = (props) => {
-  const { id, text, done } = props
+const TodoItem = ({ todo }) => {
+  const { id, text, done } = todo
   const { dispatch } = useContext(TodoContext)
 
   const handleDelete = () => {
