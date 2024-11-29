@@ -9,6 +9,7 @@ const TodoGenerator = () => {
   const { dispatch } = useContext(TodoContext)
 
   const handleInputChange = (e) => {
+    if (e.target.value.length > 100) return
     setText(e.target.value)
   }
 
