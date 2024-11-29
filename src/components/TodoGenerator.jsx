@@ -3,6 +3,7 @@ import { TodoContext } from "../context/TodoContext"
 import { ActionEnum } from "../enum/ActionEnum"
 import styles from "./TodoGenerator.module.css"
 import { TodoListEnum } from "../enum/TodoListEnum"
+import { addTodos } from "../api/todos"
 
 const TodoGenerator = () => {
   const [text, setText] = useState("")
@@ -13,8 +14,12 @@ const TodoGenerator = () => {
     setText(e.target.value)
   }
 
-  const handleAdd = () => {
-    text && dispatch({ type: ActionEnum.ADD, payload: { text } })
+  const handleAdd = async () => {
+    const todo = { text: text, done: false }
+    if (text !== "") {
+      await addTodos(todo)
+      dispatch({ type: ActionEnum.ADD, payload: todo })
+    }
     setText("")
   }
 

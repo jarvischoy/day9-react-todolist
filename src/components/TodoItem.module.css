@@ -1,11 +1,12 @@
 .itemContainer {
+  width: 100%;
   display: flex;
   align-self: center;
   gap: 10px;
 }
 
 .itemContainer > div {
-  width: 500px;
+  width: 100%;
   border: 1px solid #8d8d8d;
   padding: 2px 10px;
   border-radius: 5px;

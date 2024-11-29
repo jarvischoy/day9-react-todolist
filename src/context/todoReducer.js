@@ -1,12 +1,13 @@
-import { v4 as uuidv4 } from "uuid"
 import { ActionEnum } from "../enum/ActionEnum"
 
 export const initialState = []
 
 export const todoReducer = (state, action) => {
   switch (action.type) {
+    case ActionEnum.LOAD:
+      return action.payload
     case ActionEnum.ADD:
-      return [...state, { id: uuidv4(), text: action.payload.text, done: false }]
+      return [...state, action.payload]
     case ActionEnum.TOGGLE:
       return state.map((todo) => {
         if (todo.id === action.payload.id) {
