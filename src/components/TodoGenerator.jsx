@@ -15,10 +15,11 @@ const TodoGenerator = () => {
   }
 
   const handleAdd = async () => {
-    const todo = { text: text, done: false }
+    const trimmedText = text.trim()
+    const todo = { text: trimmedText, done: false }
     if (text !== "") {
       await addTodos(todo)
-      dispatch({ type: ActionEnum.ADD, payload: todo })
+        .then(() => dispatch({ type: ActionEnum.ADD, payload: todo }))
     }
     setText("")
   }

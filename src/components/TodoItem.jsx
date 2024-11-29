@@ -10,13 +10,13 @@ const TodoItem = ({ todo }) => {
   const { dispatch } = useContext(TodoContext)
 
   const handleDelete = async () => {
-    dispatch({ type: ActionEnum.DELETE, payload: { id } })
     await deleteTodos(id)
+      .then(() => dispatch({ type: ActionEnum.DELETE, payload: { id } }))
   }
 
   const handleToggle = async () => {
-    dispatch({ type: ActionEnum.TOGGLE, payload: { id } })
     await updateTodos({ id, text, done: !done })
+      .then(() => dispatch({ type: ActionEnum.TOGGLE, payload: { id } }))
   }
 
   return <div className={styles.itemContainer}>
