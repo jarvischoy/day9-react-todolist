@@ -16,12 +16,15 @@ const TodoGenerator = () => {
 
   const handleAdd = async () => {
     const trimmedText = text.trim()
-    const todo = { text: trimmedText, done: false }
     if (text !== "") {
-      await addTodos(todo)
-        .then(() => dispatch({ type: ActionEnum.ADD, payload: todo }))
+      try {
+        const response = await addTodos({ text: trimmedText, done: false })
+        dispatch({ type: ActionEnum.ADD, payload: response.data })
+      } catch (error) {
+        console.error("Failed to add todo", error)
+      }
+      setText("")
     }
-    setText("")
   }
 
   return <div className={styles.generatorContainer}>

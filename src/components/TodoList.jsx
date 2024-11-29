@@ -11,9 +11,13 @@ const TodoList = () => {
 
   const onLoad = async () => {
     setIsLoading(true)
-    await getTodos()
-      .then((todos) => dispatch({ type: ActionEnum.LOAD, payload: todos.data }))
-      .finally(() => setIsLoading(false))
+    try {
+      const response = await getTodos()
+      dispatch({ type: ActionEnum.LOAD, payload: response.data })
+    } catch (error) {
+      console.error("Failed to load todos", error)
+    }
+    setIsLoading(false)
   }
 
   useEffect(() => {

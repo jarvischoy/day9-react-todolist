@@ -12,11 +12,13 @@ const TodoItem = ({ todo }) => {
   const handleDelete = async () => {
     await deleteTodos(id)
       .then(() => dispatch({ type: ActionEnum.DELETE, payload: { id } }))
+      .catch((error) => console.error("Failed to delete todo", error))
   }
 
   const handleToggle = async () => {
     await updateTodos({ id, text, done: !done })
       .then(() => dispatch({ type: ActionEnum.TOGGLE, payload: { id } }))
+      .catch((error) => console.error("Failed to toggle todo", error))
   }
 
   return <div className={styles.itemContainer}>
