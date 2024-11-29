@@ -4,12 +4,16 @@ import { TodoContext } from "../context/TodoContext"
 import { ActionEnum } from "../enum/ActionEnum"
 import styles from "./TodoItem.module.css"
 import { deleteTodos, updateTodos } from "../api/todos"
-import { Button, Spin } from "antd"
+import { Button, Input, Modal, Spin } from "antd"
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons"
 
 const TodoItem = ({ todo }) => {
   const { id, text, done } = todo
   const { dispatch } = useContext(TodoContext)
   const [isLoading, setIsLoading] = useState(false)
+  const [isShowUpdateModal, setIsShowUpdateModal] = useState(false)
+  const [originalText, setOriginalText] = useState(text)
+  const [updateText, setUpdateText] = useState(text)
 
   const handleDelete = async () => {
     setIsLoading(true)
@@ -27,14 +31,48 @@ const TodoItem = ({ todo }) => {
       .finally(() => setIsLoading(false))
   }
 
-  return <Spin spinning={isLoading}>
-    <div className={styles.itemContainer}>
-      <div className={done ? styles.done : styles.notDone} onClick={handleToggle}>
-        {text}
+  const toggleUpdateModal = () => {
+    setIsShowUpdateModal(!isShowUpdateModal)
+  }
+
+  const handleOk = async () => {
+    setIsLoading(true)
+    await updateTodos({ id, text: updateText, done })
+      .then(() => dispatch({ type: ActionEnum.UPDATE, payload: { id, text: updateText } }))
+      .catch((error) => console.error("Failed to update todo", error))
+      .finally(() => {
+        setIsLoading(false)
+        setOriginalText(updateText)
+        toggleUpdateModal()
+      })
+
+  }
+
+  const handleUpdateTextChange = (e) => {
+    if (e.target.value.length > 100) return
+    setUpdateText(e.target.value)
+  }
+
+  const handleCancel = () => {
+    setUpdateText(text)
+    toggleUpdateModal()
+  }
+
+  return <>
+    <Spin spinning={isLoading}>
+      <div className={styles.itemContainer}>
+        <Button className={styles.updateButton} onClick={toggleUpdateModal}><EditOutlined /></Button>
+        <div className={done ? styles.done : styles.notDone} onClick={handleToggle}>
+          {originalText}
+        </div>
+        <Button danger className={styles.deleteButton} onClick={handleDelete}><DeleteOutlined /></Button>
       </div>
-      <Button danger className={styles.deleteButton} onClick={handleDelete}>x</Button>
-    </div>
-  </Spin>
+    </Spin>
+
+    <Modal title="Update Todo" open={isShowUpdateModal} onOk={handleOk} onCancel={handleCancel} >
+      <Input value={updateText} onChange={handleUpdateTextChange} />
+    </Modal>
+  </>
 }
 
 export default TodoItem
