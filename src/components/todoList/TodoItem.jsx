@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useContext } from "react"
-import { TodoContext } from "../context/TodoContext"
-import { ActionEnum } from "../enum/ActionEnum"
+import { TodoContext } from "../../context/TodoContext"
+import { ActionEnum } from "../../enum/ActionEnum"
 import styles from "./TodoItem.module.css"
-import { deleteTodos, updateTodos } from "../api/todos"
+import { deleteTodos, updateTodos } from "../../api/todos"
 import { Button, Col, Input, Modal, Row, Space, Spin } from "antd"
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons"
 

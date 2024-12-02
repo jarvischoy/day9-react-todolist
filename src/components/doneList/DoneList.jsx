@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import styles from "./DoneList.module.css"
-import { TodoContext } from "../context/TodoContext"
+import { TodoContext } from "../../context/TodoContext"
 import DoneItem from "./DoneItem"
 
 const DoneList = () => {

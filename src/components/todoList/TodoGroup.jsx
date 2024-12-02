@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
-import { TodoContext } from "../context/TodoContext"
-import { TodoListEnum } from "../enum/TodoListEnum"
+import { TodoContext } from "../../context/TodoContext"
+import { TodoListEnum } from "../../enum/TodoListEnum"
 import TodoGenerator from "./TodoGenerator"
 import styles from "./TodoGroup.module.css"
 import TodoItem from "./TodoItem"

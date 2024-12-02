@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react"
-import { TodoContext } from "../context/TodoContext"
-import { ActionEnum } from "../enum/ActionEnum"
+import { TodoContext } from "../../context/TodoContext"
+import { ActionEnum } from "../../enum/ActionEnum"
 import styles from "./TodoGenerator.module.css"
-import { TodoListEnum } from "../enum/TodoListEnum"
-import { addTodos } from "../api/todos"
+import { TodoListEnum } from "../../enum/TodoListEnum"
+import { addTodos } from "../../api/todos"
 import { Button, Input, Spin } from "antd"
 
 const TodoGenerator = () => {

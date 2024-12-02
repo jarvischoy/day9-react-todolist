@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./DoneList.module.css"
+import styles from "./HelpPage.module.css"
 
 const HelpPage = () => {
   return <>
