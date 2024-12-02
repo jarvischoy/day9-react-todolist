@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const client = axios.create({
-  baseURL: "https://67495bca868020296630a5b2.mockapi.io/todoList",
+  baseURL: "https://1617495bca868020296630a5b2.mockapi.io/todoList",
 })
 
 client.interceptors.request.use(
@@ -30,7 +30,11 @@ client.interceptors.response.use(
   (error) => {
     // handle response error
     if (error.response && error.response.status === 404) {
-      window.location.href = "/404"
+      window.location.href = "/404-not-found"
+    }
+
+    if (error.response && error.response.status === 500) {
+      window.location.href = "/server-error"
     }
 
     console.error("Response Error:", error)
