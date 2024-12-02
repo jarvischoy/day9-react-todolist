@@ -15,6 +15,13 @@ export const todoReducer = (state, action) => {
         }
         return todo
       })
+    case ActionEnum.UPDATE:
+      return state.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, text: action.payload.text }
+        }
+        return todo
+      })
     case ActionEnum.DELETE:
       return state.filter((todo) => todo.id !== action.payload.id)
     default:

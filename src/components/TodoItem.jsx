@@ -12,7 +12,7 @@ const TodoItem = ({ todo }) => {
   const { dispatch } = useContext(TodoContext)
   const [isLoading, setIsLoading] = useState(false)
   const [isShowUpdateModal, setIsShowUpdateModal] = useState(false)
-  const [originalText, setOriginalText] = useState(text)
+  // const [originalText, setOriginalText] = useState(text)
   const [updateText, setUpdateText] = useState(text)
 
   const handleDelete = async () => {
@@ -42,7 +42,7 @@ const TodoItem = ({ todo }) => {
       .catch((error) => console.error("Failed to update todo", error))
       .finally(() => {
         setIsLoading(false)
-        setOriginalText(updateText)
+        // setOriginalText(updateText)
         toggleUpdateModal()
       })
 
@@ -63,7 +63,7 @@ const TodoItem = ({ todo }) => {
       <div className={styles.itemContainer}>
         <Button className={styles.updateButton} onClick={toggleUpdateModal}><EditOutlined /></Button>
         <div className={done ? styles.done : styles.notDone} onClick={handleToggle}>
-          {originalText}
+          {text}
         </div>
         <Button danger className={styles.deleteButton} onClick={handleDelete}><DeleteOutlined /></Button>
       </div>
