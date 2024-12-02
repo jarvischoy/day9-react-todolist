@@ -1,7 +1,8 @@
 import axios from "axios"
 
 const client = axios.create({
-  baseURL: "https://67495bca868020296630a5b2.mockapi.io/todoList",
+  // baseURL: "https://67495bca868020296630a5b2.mockapi.io/todoList",
+  baseURL: "http://localhost:8080/",
 })
 
 client.interceptors.request.use(
