@@ -2,13 +2,14 @@ import React, { useContext, useEffect } from "react"
 import styles from "./DoneList.module.css"
 import { TodoContext } from "../../context/TodoContext"
 import DoneItem from "./DoneItem"
+import { ActionEnum } from "../../enum/ActionEnum"
 
 const DoneList = () => {
   const { state, dispatch } = useContext(TodoContext)
 
   useEffect(() => {
     if (state.length === 0 || state === null) {
-      dispatch({ type: "LOAD" })
+      dispatch({ type: ActionEnum.LOAD })
     }
   }, [dispatch])
 
